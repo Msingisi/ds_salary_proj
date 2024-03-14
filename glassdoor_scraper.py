@@ -51,8 +51,7 @@ def get_jobs(keyword, num_jobs, verbose, path, slp_time):
             print('x out worked')
         except NoSuchElementException:
             print('x out failed')
-            
-        
+                    
         #Going through each job in this page
         job_buttons = driver.find_elements(By.XPATH,'//li[@class="JobsList_jobListItem__wjTHv"]')  #jl for Job Listing. These are the buttons we're going to click.
         print("Job buttons:", job_buttons)
@@ -68,13 +67,14 @@ def get_jobs(keyword, num_jobs, verbose, path, slp_time):
             
             while not collected_successfully:
                 try:
-                    company_name = driver.find_element(By.XPATH, '//div[@class="JobDetails_jobDetailsHeader__Hd9M3"]').text.strip()
+                    company_name = driver.find_element(By.CLASS_NAME, "heading_Subhead__Ip1aW").text.strip()
                     location = driver.find_element(By.XPATH, '//div[@class="JobDetails_location__mSg5h"]').text
-                    job_title = driver.find_element(By.CLASS_NAME, "heading_Level1__FG5gb").text
-                    job_description = driver.find_element(By.CLASS_NAME, "JobDetails_jobDetailsSection__y_xa6").text.strip()
+                    job_title = driver.find_element(By.CLASS_NAME, "heading_Level1__soLZs").text
+                    job_description = driver.find_element(By.CLASS_NAME, "JobDetails_showHidden__C_FOA").text.strip()
                     collected_successfully = True
                 except:
                     time.sleep(15)
+            
 
             try:
                 salary_estimate = driver.find_element(By.CLASS_NAME, "SalaryEstimate_salaryEstimateContainer__GkgnI").text
