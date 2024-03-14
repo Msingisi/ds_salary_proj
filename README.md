@@ -1,4 +1,4 @@
-# ds_salary_proj
+# data scientist_salary_proj
 
 ## Resources
 
