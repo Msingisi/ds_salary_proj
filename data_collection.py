@@ -2,7 +2,7 @@
 """
 Created on Mon Mar 11 17:19:43 2024
 
-@author: Msingisi
+@author: mzing
 """
 
 import glassdoor_scraper as gs
@@ -12,4 +12,4 @@ path = "C:/Users/mzing/Documents/ds_salary_proj/chromedriver.exe"
 
 df = gs.get_jobs('data scientist', 1000, False, path, 15)
 
-df.to_csv('glassdoor_jobs.csv', index =False)
+df.to_csv('glassdoor_jobs.csv', index = False)
