@@ -58,7 +58,10 @@ def extract_state(location):
     except IndexError:
         return None 
 
+#state name only
+
 df['job_state'] = df['Location'].apply(extract_state)
+df['job_state'] = df['job_state'].str.replace("Cuyahoga", "OH")
 
 #age of company
 
@@ -119,6 +122,9 @@ def extract_first_education(job_description):
 
 df['study_field'] = df['Job Description'].apply(extract_first_education)
 
-df.to_csv('glassdoor_jobs_cleaned.csv', index = False)
+#replace -- with -1 in other columns(Industry, Sector)
 
-dff = pd.read_csv('glassdoor_jobs_cleaned.csv')
+df['Industry'] = df['Industry'].str.replace("--", "-1")
+df['Sector'] = df['Sector'].str.replace("--", "-1")
+
+df.to_csv('glassdoor_jobs_cleaned.csv', index = False)
